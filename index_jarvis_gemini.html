@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#07111f">
+<title>J.A.R.V.I.S. | Personal Assistant</title>
+<style>
+:root{color-scheme:dark;--bg:#050b14;--panel:#0b1726;--panel2:#0e2033;--line:#183750;--cyan:#58dcff;--blue:#4388ff;--text:#e8f6ff;--muted:#91aabd;--green:#6df5c1}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% 0%,#102a43 0%,var(--bg) 55%);color:var(--text);font:15px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}button,input{font:inherit}button{cursor:pointer}.app{max-width:1200px;margin:auto;padding:22px 20px 36px}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:18px}.brand{display:flex;gap:12px;align-items:center}.mark{width:42px;height:42px;border:1px solid var(--cyan);border-radius:50%;display:grid;place-items:center;color:var(--cyan);font-size:12px;letter-spacing:1px;box-shadow:0 0 22px #58dcff22}.brand h1{font-size:17px;letter-spacing:3px;margin:0}.brand p{margin:2px 0 0;color:var(--muted);font-size:11px;letter-spacing:2px}.status{font-size:12px;color:var(--green);display:flex;gap:8px;align-items:center}.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}.grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,.85fr);gap:18px;margin-top:20px}.panel{background:linear-gradient(145deg,#0d1b2bdf,#081321ee);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 15px 50px #0003}.panelhead{display:flex;justify-content:space-between;align-items:center;gap:10px}.eyebrow{font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase}.panel h2{font-size:17px;font-weight:600;margin:4px 0 0}.pill{border:1px solid #24516a;color:var(--cyan);padding:5px 9px;border-radius:30px;font-size:10px;letter-spacing:1px}.corewrap{display:grid;place-items:center;padding:25px 0 15px}.core{width:170px;height:170px;border-radius:50%;display:grid;place-items:center;position:relative;background:radial-gradient(circle,#174568 0%,#0b263d 40%,#071523 68%);border:1px solid #49cfff99;box-shadow:0 0 28px #16bdf733,inset 0 0 28px #238dcb33;animation:pulse 4s ease-in-out infinite}.core:before,.core:after{content:"";position:absolute;border-radius:50%;inset:-11px;border:1px solid #48cfff66;transform:rotateX(65deg) rotateZ(-15deg)}.core:after{inset:-22px;border-color:#2c8dce55;transform:rotateX(65deg) rotateZ(40deg)}.coretext{text-align:center;z-index:1}.coretext strong{display:block;color:var(--cyan);font-size:17px;letter-spacing:3px}.coretext span{font-size:9px;letter-spacing:2px;color:#9adfff}.core.active{box-shadow:0 0 42px #16bdf766,inset 0 0 35px #238dcb66}.core.active .coretext strong{color:white}.substatus{text-align:center;color:var(--muted);font-size:12px;margin-top:2px}.chat{height:230px;overflow:auto;display:flex;flex-direction:column;gap:10px;padding:14px 0}.msg{max-width:90%;padding:10px 13px;border-radius:12px;background:#102438;border:1px solid #1a3b53;color:#d8ecf8;font-size:13px;white-space:pre-wrap}.msg.user{align-self:flex-end;background:#102d4c;border-color:#245a85}.msg small{display:block;color:var(--cyan);font-size:9px;letter-spacing:1px;margin-bottom:3px}.entry{display:flex;gap:8px}.entry input{min-width:0;flex:1;background:#071321;border:1px solid #20445e;border-radius:10px;padding:12px;color:var(--text);outline:none}.entry input:focus{border-color:var(--cyan)}.btn{border:1px solid #24516a;background:#10263a;color:var(--text);border-radius:10px;padding:10px 13px}.btn.primary{background:linear-gradient(120deg,#126a91,#2456a2);border-color:#42bde9}.btn.mic{width:46px;font-size:18px;color:var(--cyan)}.btn:active{transform:scale(.98)}.side{display:flex;flex-direction:column;gap:18px}.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}.tile{padding:13px;background:#091523;border:1px solid #183750;border-radius:12px}.tile span{display:block;color:var(--muted);font-size:10px;letter-spacing:1px;text-transform:uppercase}.tile strong{display:block;margin-top:6px;font-size:14px;font-weight:500}.quick{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}.quick button{text-align:left;min-height:62px}.quick b{display:block;font-size:12px}.quick span{display:block;color:var(--muted);font-size:10px;margin-top:3px}.note{color:var(--muted);font-size:11px;margin-top:16px;line-height:1.6}.bottom{color:#7895aa;text-align:center;font-size:10px;letter-spacing:1px;margin-top:22px}.nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.nav button{font-size:11px;padding:7px 11px}.nav button.selected{border-color:var(--cyan);color:var(--cyan)}@keyframes pulse{50%{filter:brightness(1.18)}}
+@media(max-width:760px){.app{padding:14px 12px 25px}.top{padding-bottom:14px}.brand h1{font-size:15px}.grid{grid-template-columns:1fr;gap:12px;margin-top:12px}.panel{padding:16px;border-radius:15px}.core{width:145px;height:145px}.chat{height:210px}.side{gap:12px}.bottom{margin-top:16px}.status{font-size:10px}.hide-mobile{display:none}}
+</style></head>
+<body><main class="app"><header class="top"><div class="brand"><div class="mark">AI</div><div><h1>J.A.R.V.I.S.</h1><p>PERSONAL ASSISTANT SYSTEM</p></div></div><div class="status"><i class="dot"></i><span id="topStatus">READY TO TEST</span></div></header>
+<div class="grid"><section class="panel"><div class="panelhead"><div><div class="eyebrow">Main interface</div><h2>Good day. How can I assist?</h2></div><span class="pill">PROTOTYPE 01</span></div><div class="corewrap"><div class="core" id="core"><div class="coretext"><strong>J.A.R.V.I.S.</strong><span id="coreState">STANDBY MODE</span></div></div><div class="substatus" id="substatus">Awaiting your command</div></div>
+<div class="eyebrow">Conversation</div><div class="chat" id="chat" aria-live="polite"><div class="msg"><small>J.A.R.V.I.S.</small>Systems initialized. Send a message to test the Gemini connection.</div></div><form class="entry" id="form"><input id="prompt" autocomplete="off" placeholder="Type a command..." aria-label="Type a command"><button class="btn primary" type="submit">Send</button><button class="btn mic" id="mic" type="button" aria-label="Start voice input" title="Voice input">🎙</button></form><div class="nav"><button class="btn selected" data-tab="overview">Overview</button><button class="btn" data-tab="projects">Projects</button><button class="btn" data-tab="systems">Systems</button><button class="btn" data-tab="memory">Memory</button></div><div class="note" id="tabInfo">This is a front-end prototype. It does not control your computer or store shared online memory yet.</div></section>
+<aside class="side"><section class="panel"><div class="eyebrow">System overview</div><h2>Assistant status</h2><div class="tiles"><div class="tile"><span>AI connection</span><strong id="aiState">Waiting for test</strong></div><div class="tile"><span>Voice output</span><strong id="voiceState">Browser supported</strong></div><div class="tile"><span>Memory</span><strong>Demo only</strong></div><div class="tile"><span>Access</span><strong>This device</strong></div></div></section><section class="panel"><div class="eyebrow">Quick actions</div><h2>Command shortcuts</h2><div class="quick"><button class="btn" data-command="Give me a daily briefing"><b>◈ Daily briefing</b><span>Summarize the day</span></button><button class="btn" data-command="Show my projects"><b>⌘ My projects</b><span>View active work</span></button><button class="btn" data-command="Explain what you can do"><b>✧ Capabilities</b><span>Assistant overview</span></button><button class="btn" data-command="Read your last response aloud"><b>♫ Speak response</b><span>Test voice output</span></button></div><p class="note">AI requests are sent through your secure Cloudflare backend. Your Gemini API key stays on the server, not in this page.</p></section></aside></div><footer class="bottom">J.A.R.V.I.S. · PERSONAL PROJECT · GEMINI BACKEND</footer></main>
+<script>
+(function () {
+  const WORKER_URL = "https://jarvis-ai-backend.abgtz2009.workers.dev";
+
+  function initJarvis() {
+    const form = document.getElementById("form");
+    const prompt = document.getElementById("prompt");
+    const chat = document.getElementById("chat");
+    const substatus = document.getElementById("substatus");
+    const core = document.getElementById("core");
+    const coreState = document.getElementById("coreState");
+    const tabInfo = document.getElementById("tabInfo");
+    const topStatus = document.getElementById("topStatus");
+    const aiState = document.getElementById("aiState");
+    const sendButton = form.querySelector('button[type="submit"]');
+    let lastReply = "Systems initialized. Send a message to test the Gemini connection.";
+
+    function addMessage(text, who) {
+      const el = document.createElement("div");
+      el.className = "msg" + (who === "user" ? " user" : "");
+      const label = document.createElement("small");
+      label.textContent = who === "user" ? "YOU" : "J.A.R.V.I.S.";
+      el.appendChild(label);
+      el.appendChild(document.createTextNode(text));
+      chat.appendChild(el);
+      chat.scrollTop = chat.scrollHeight;
+      if (who !== "user") lastReply = text;
+    }
+
+    function setStatus(message, state) {
+      substatus.textContent = message;
+      if (state === "connected") {
+        topStatus.textContent = "AI ONLINE";
+        aiState.textContent = "Connected";
+      } else if (state === "error") {
+        topStatus.textContent = "CONNECTION ERROR";
+        aiState.textContent = "Connection issue";
+      } else if (state === "working") {
+        topStatus.textContent = "PROCESSING";
+      }
+    }
+
+    async function sendCommand(command) {
+      const text = (typeof command === "string" ? command : prompt.value).trim();
+      if (!text) {
+        substatus.textContent = "Type a command first";
+        prompt.focus();
+        return;
+      }
+
+      addMessage(text, "user");
+      prompt.value = "";
+      core.classList.add("active");
+      coreState.textContent = "PROCESSING";
+      setStatus("Sending your message to Gemini...", "working");
+      sendButton.disabled = true;
+
+      try {
+        const response = await fetch(WORKER_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: text })
+        });
+
+        let data;
+        try {
+          data = await response.json();
+        } catch (_) {
+          throw new Error("The server returned an unreadable response.");
+        }
+
+        if (!response.ok || data.error) {
+          throw new Error(data.error || ("Server request failed (" + response.status + ")."));
+        }
+        if (typeof data.reply !== "string" || !data.reply.trim()) {
+          throw new Error("The AI server did not return a reply.");
+        }
+
+        addMessage(data.reply.trim(), "jarvis");
+        setStatus("Gemini response ready", "connected");
+      } catch (error) {
+        console.error("J.A.R.V.I.S. connection error:", error);
+        const detail = error && error.message ? error.message : "Unknown connection error.";
+        addMessage("I couldn't reach the AI service. " + detail + " Check the Cloudflare Worker deployment and Gemini API setup, then try again.", "jarvis");
+        setStatus("Connection failed · check backend settings", "error");
+      } finally {
+        sendButton.disabled = false;
+        core.classList.remove("active");
+        coreState.textContent = "STANDBY MODE";
+      }
+    }
+
+    function speakLastReply() {
+      if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
+        addMessage("Voice output is not supported in this browser. You can still read the response on screen.", "jarvis");
+        return;
+      }
+      if (!lastReply) {
+        substatus.textContent = "There is no response to read yet";
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(lastReply);
+      utterance.lang = "en-US";
+      utterance.rate = 1;
+      utterance.onstart = function () { substatus.textContent = "Speaking last response..."; };
+      utterance.onend = function () { substatus.textContent = "Awaiting your command"; };
+      utterance.onerror = function () { substatus.textContent = "Voice output could not start"; };
+      window.speechSynthesis.speak(utterance);
+    }
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      sendCommand();
+    });
+
+    document.querySelectorAll("[data-command]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        const command = button.getAttribute("data-command");
+        if (command === "Read your last response aloud") speakLastReply();
+        else sendCommand(command);
+      });
+    });
+
+    const tabText = {
+      overview: "This is the J.A.R.V.I.S. interface connected to a Gemini backend. It does not control your computer or provide persistent memory yet.",
+      projects: "Projects panel selected. Editable project cards and task lists can be added in a later update.",
+      systems: "Systems panel selected. Connection status updates after a successful AI request; other status values are examples.",
+      memory: "Memory panel selected. This version does not save conversation history as shared online memory."
+    };
+    document.querySelectorAll("[data-tab]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        document.querySelectorAll("[data-tab]").forEach(function (item) {
+          item.classList.remove("selected");
+        });
+        button.classList.add("selected");
+        tabInfo.textContent = tabText[button.getAttribute("data-tab")] || tabText.overview;
+      });
+    });
+
+    document.getElementById("mic").addEventListener("click", async function () {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+      if (!window.isSecureContext) {
+        addMessage("Voice input needs a secure website connection (HTTPS). Open the published GitHub Pages address, not a downloaded file.", "jarvis");
+        return;
+      }
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        addMessage("This browser does not provide microphone access to this page. Check your browser and device microphone permissions.", "jarvis");
+        return;
+      }
+      if (!SpeechRecognition) {
+        addMessage("Speech-to-text is not available in this browser. You can still type commands in the message box.", "jarvis");
+        return;
+      }
+
+      let permissionStream;
+      try {
+        substatus.textContent = "Checking microphone permission...";
+        permissionStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        permissionStream.getTracks().forEach(function (track) { track.stop(); });
+
+        const recognition = new SpeechRecognition();
+        recognition.lang = "en-US";
+        recognition.interimResults = false;
+        recognition.continuous = false;
+        substatus.textContent = "Listening...";
+        coreState.textContent = "LISTENING";
+        core.classList.add("active");
+
+        recognition.onresult = function (event) {
+          const spokenText = event.results && event.results[0] && event.results[0][0]
+            ? event.results[0][0].transcript : "";
+          if (spokenText) sendCommand(spokenText);
+          else addMessage("I couldn't hear a clear command. Please try again or type it.", "jarvis");
+        };
+        recognition.onerror = function (event) {
+          const errors = {
+            "not-allowed": "The browser denied speech recognition. Check the site's microphone permissions.",
+            "service-not-allowed": "The browser's speech recognition service is unavailable.",
+            "audio-capture": "The browser could not access an audio input. Check microphone permissions.",
+            "no-speech": "I didn't hear anything. Try again or type your command.",
+            "network": "The browser's speech recognition service could not connect. Check your internet connection.",
+            "aborted": "Voice input was stopped."
+          };
+          addMessage(errors[event.error] || ("Voice input failed (" + (event.error || "unknown error") + "). Text commands are still available."), "jarvis");
+          substatus.textContent = "Voice input unavailable";
+        };
+        recognition.onend = function () {
+          if (coreState.textContent === "LISTENING") {
+            substatus.textContent = "Awaiting your command";
+            coreState.textContent = "STANDBY MODE";
+            core.classList.remove("active");
+          }
+        };
+        recognition.start();
+      } catch (error) {
+        if (permissionStream) permissionStream.getTracks().forEach(function (track) { track.stop(); });
+        let message = "Could not start voice input. ";
+        if (error && (error.name === "NotAllowedError" || error.name === "PermissionDeniedError")) {
+          message += "The browser did not grant microphone permission. Check your device and website settings.";
+        } else if (error && error.name === "NotFoundError") {
+          message += "No microphone was detected.";
+        } else if (error && error.name === "NotReadableError") {
+          message += "The microphone may be in use by another app.";
+        } else {
+          message += "Speech recognition may not be supported on this device.";
+        }
+        addMessage(message, "jarvis");
+        substatus.textContent = "Voice input unavailable";
+        coreState.textContent = "STANDBY MODE";
+        core.classList.remove("active");
+      }
+    });
+
+    const voiceState = document.getElementById("voiceState");
+    if (!("speechSynthesis" in window)) voiceState.textContent = "Unavailable";
+    else voiceState.textContent = "Available in browser";
+
+    substatus.textContent = "Ready · Send a message to test Gemini";
+  }
+
+  window.addEventListener("error", function (event) {
+    const status = document.getElementById("substatus");
+    if (status) status.textContent = "Script error · refresh the page and try again";
+    console.error("J.A.R.V.I.S. script error:", event.message);
+  });
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initJarvis);
+  } else {
+    initJarvis();
+  }
+})();
+</script></body></html>
