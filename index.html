@@ -14,7 +14,8 @@
 <script>
 (function () {
   const WORKER_URL = "https://jarvis-ai-backend.abgtz2009.workers.dev";
-
+const MEMORY_KEY = "jarvis_conversation_v1";
+const MAX_HISTORY = 24;
   function initJarvis() {
     const form = document.getElementById("form");
     const prompt = document.getElementById("prompt");
