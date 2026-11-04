@@ -29,17 +29,32 @@ const MAX_HISTORY = 24;
     const sendButton = form.querySelector('button[type="submit"]');
     let lastReply = "Systems initialized. Send a message to test the Gemini connection.";
 
-    function addMessage(text, who) {
-      const el = document.createElement("div");
-      el.className = "msg" + (who === "user" ? " user" : "");
-      const label = document.createElement("small");
-      label.textContent = who === "user" ? "YOU" : "J.A.R.V.I.S.";
-      el.appendChild(label);
-      el.appendChild(document.createTextNode(text));
-      chat.appendChild(el);
-      chat.scrollTop = chat.scrollHeight;
-      if (who !== "user") lastReply = text;
-    }
+function addMessage(text, who, persist = true) {
+  const el = document.createElement("div");
+  el.className = "msg" + (who === "user" ? " user" : "");
+
+  const label = document.createElement("small");
+  label.textContent = who === "user" ? "YOU" : "J.A.R.V.I.S.";
+
+  el.appendChild(label);
+  el.appendChild(document.createTextNode(text));
+  chat.appendChild(el);
+  chat.scrollTop = chat.scrollHeight;
+
+  if (who !== "user") {
+    lastReply = text;
+  }
+
+  if (persist && (who === "user" || who === "assistant")) {
+    conversation.push({
+      role: who === "user" ? "user" : "model",
+      text: text
+    });
+
+    conversation = conversation.slice(-MAX_HISTORY);
+    saveConversation();
+  }
+}
 
     function setStatus(message, state) {
       substatus.textContent = message;
